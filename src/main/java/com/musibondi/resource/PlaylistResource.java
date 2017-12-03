@@ -29,46 +29,21 @@ public class PlaylistResource {
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Playlist>> getPlaylists() {
-        LOGGER.info("Get all playlists called.");
-
-//        List<Playlist> playlists = new ArrayList<>();
-//
-//        Playlist mockPlaylistOne = new Playlist(
-//                "cc7e32b6-d832-11e7-9296-cec278b6b50a",
-//                "Piashen's Playlist of Epicness",
-//                new ArrayList(),
-//                new PlaylistProperties());
-//
-//        Playlist mockPlaylistTwo = new Playlist(
-//                "cc7e32b6-d832-11e7-9296-cec278b6b50a",
-//                "Piashen's Playlist of Epicness",
-//                new ArrayList(),
-//                new PlaylistProperties());
-
-//        playlists.add(mockPlaylistOne);
-//        playlists.add(mockPlaylistTwo);
+        LOGGER.info("Get all playlists.");
 
         return new ResponseEntity<>(playlistService.getAllPlaylists(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<Playlist> createPlaylist(@RequestBody Playlist playlist) {
-        LOGGER.info("Create playlist: {} called.", playlist);
+        LOGGER.info("Create playlist: {}.", playlist);
 
-        playlistService.savePlaylist(playlist);
-
-        return new ResponseEntity<>(playlist, HttpStatus.OK);
+        return new ResponseEntity<>(playlistService.savePlaylist(playlist), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{playlistId}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Playlist> getPlaylistDetails(@PathVariable("playlistId") String id) {
-        LOGGER.info("Get playlist: {} called.", id);
-
-//        Playlist mockPlaylist = new Playlist(
-//                "cc7e32b6-d832-11e7-9296-cec278b6b50a",
-//                "Piashen's Playlist of Epicness",
-//                new ArrayList(),
-//                new PlaylistProperties());
+        LOGGER.info("Get playlist: {}.", id);
 
         return new ResponseEntity<>(playlistService.getPlaylist(id), HttpStatus.OK);
     }
@@ -77,7 +52,6 @@ public class PlaylistResource {
     public ResponseEntity<Playlist> updatePlaylist(@PathVariable("playlistId") String id, @RequestBody Playlist playlist) {
         LOGGER.info("Update playlist: {} with body: {} called.", id, playlist);
 
-        // Here we save it in the magical DB
         playlistService.updatePlaylist(id, playlist);
 
         return new ResponseEntity<>(playlist, HttpStatus.OK);

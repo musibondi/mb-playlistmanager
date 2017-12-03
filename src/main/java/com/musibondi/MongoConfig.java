@@ -11,6 +11,7 @@ import java.io.IOException;
 
 /**
  * This config will only be included in the testing part of SpringBoot, or when running with LOCAL profile.
+ * FIXME: To be included only with Spring profile LOCAL
  */
 @Configuration
 public class MongoConfig {

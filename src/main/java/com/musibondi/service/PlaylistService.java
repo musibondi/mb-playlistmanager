@@ -31,9 +31,9 @@ public class PlaylistService {
 
     public Playlist updatePlaylist(String id, Playlist playlist) {
         if (playlistRepository.exists(id)) {
-            playlistRepository.save(playlist);
+            return playlistRepository.save(playlist);
         }
-        
+
         throw new IllegalArgumentException(String.format("Playlist with id %s could not be found.", id));
     }
 }
