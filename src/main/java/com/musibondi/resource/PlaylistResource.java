@@ -2,7 +2,6 @@ package com.musibondi.resource;
 
 
 import com.musibondi.domain.Playlist;
-import com.musibondi.domain.PlaylistProperties;
 import com.musibondi.service.PlaylistService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,14 +28,12 @@ public class PlaylistResource {
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<Playlist>> getPlaylists() {
         LOGGER.info("Get all playlists.");
-
         return new ResponseEntity<>(playlistService.getAllPlaylists(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<Playlist> createPlaylist(@RequestBody Playlist playlist) {
         LOGGER.info("Create playlist: {}.", playlist);
-
         return new ResponseEntity<>(playlistService.savePlaylist(playlist), HttpStatus.OK);
     }
 
