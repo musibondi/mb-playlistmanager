@@ -19,8 +19,33 @@ Or to remote debug on port 5005:
 ```
 ./run.sh -debug
 ```
+NOTE: Debug is configured to be blocking (won't start until connected)
 
-# Technologies
+# To use standalone db:
 
-** SpringBoot **
-** MongoDB **
+Mac:
+```
+# Install
+brew install mongo
+
+# Start
+mongod
+
+# Query
+# host: localhost
+# port: 27017
+mongo playlist_db
+```
+
+# To connect to embedded db
+
+```
+# host: localhost
+# port: 27018
+mongo playlist_embeded_db
+```
+
+# Technologies Used
+
+- SpringBoot
+- MongoDB
